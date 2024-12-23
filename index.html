@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penyimpanan Data Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Form Penyimpanan Website</h1>
+        <form id="websiteForm">
+            <label for="name">Nama Website:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="link">Link Website:</label>
+            <input type="url" id="link" name="link" required>
+            <button type="submit">Simpan</button>
+        </form>
+
+        <h2>Daftar Website</h2>
+        <ul id="websiteList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
