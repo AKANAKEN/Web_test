@@ -1,13 +1,15 @@
 
 
-<iframe src="Navbar.html" width="100%" height="600px" frameborder="0"></iframe>
+
 
 <!-- Header with full-height image -->
 <!-- <header class="bgimg-1 w3-display-container w3-black center" id="Aktivity">
   
 </header> -->
 
-
+<?php
+include 'side/Navbar.php';
+?>
 
 <!-- About Section -->
 <div class="w3-container w3-dark-grey" style="padding:128px 16px" id="Aktivity">
@@ -697,4 +699,6 @@ var x = setInterval(function() {
 
 
 
- <iframe src="Footer.html" width="100%" height="600px" frameborder="0"></iframe>
+ <?php
+include 'side/Footer.php';
+?>

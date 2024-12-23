@@ -1,3 +1,7 @@
+<?php
+include 'side/Navbar.php';
+?>
+
 <script>
   function myFunction1() {
    alert("AkanaKen : Repair Web [coming soon]");
@@ -32,3 +36,7 @@
    <h3 class="w3-center">TIMELINE</h3>
   
  </div>
+
+ <?php
+include 'side/Footer.php';
+?>

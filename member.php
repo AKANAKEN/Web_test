@@ -1,9 +1,11 @@
-<iframe src="Navbar.html" width="100%" height="600px" frameborder="0"></iframe>
+
 
 
 <!-- Header with full-height image -->
 <header class="w3-display-container w3-grayscale-min" id="home">
-  
+<?php
+include 'side/Navbar.php';
+?>
 </header>
 
 
@@ -412,4 +414,6 @@
 
 
     
-<iframe src="Footer.html" width="100%" height="600px" frameborder="0"></iframe>
+<?php
+include 'side/Footer.php';
+?>
