@@ -2,26 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script>
-    // Function to load navbar content from an external file
-    function loadNavbar() {
-      fetch("navbar.html")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok.");
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => console.error("Failed to load navbar:", error));
-    }
-  </script>
+
+  
 <body onload="loadNavbar()">
 
-  <!-- Placeholder for Navbar -->
-  <div id="navbar-placeholder"></div><br><br>
+
 <footer class="w3-center w3-black w3-padding-64">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <p class="w3-small">Website Ini bertujuan untuk Memperkenalkan Apa itu Comunitas <b><u>Pemberi Tau Empire</u></b></p>
