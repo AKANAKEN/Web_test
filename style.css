@@ -76,6 +76,7 @@
 /* Position the image container (needed to position the left and right arrows) */
 .container {
   position: relative;
+  
 }
 
 /* Hide the images by default */
@@ -194,4 +195,14 @@ img {vertical-align: middle;}
       min-width: auto;
     
 }
+
+/* Chart */
+.chart-container {
+  width: 20%;
+  margin: auto;
+}
+
+
+
+
 

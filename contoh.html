@@ -1,40 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Modular Navbar Example</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donut Chart Rating</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 20%;
+            margin: auto;
+        }
+    </style>
 </head>
-<script>
-    // Function to load navbar content from an external file
-    function loadNavbar() {
-      fetch("navbar.html")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok.");
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => console.error("Failed to load navbar:", error));
-    }
-  </script>
-<body onload="loadNavbar()">
+<body>
+    <h1>Donut Chart Rating</h1>
+    <div class="chart-container">
+        <canvas id="ratingChart"></canvas>
+    </div>
 
-  <!-- Placeholder for Navbar -->
-  <div id="navbar-placeholder"></div><br><br>
+    <script>
+        const url = 'https://api.sheety.co/4f50258db672da74f73e09f356a9384f/serverFutakiEmpire (jawaban)/formResponses1';
+        fetch(url)
+        .then(response => response.json())
+        .then(json => {
+            const ratings = json.formResponses1;
+            const ratingCounts = {};
 
-  <!-- Page Content -->
-  <div class="w3-container">
-    <h1>Welcome to Pemberi Tau Empire</h1>
-    <p>This is an example page with a modular navbar.</p>
-  </div>
+            // Hitung jumlah masing-masing rating
+            ratings.forEach(rating => {
+                const value = rating.rating;
+                if (ratingCounts[value]) {
+                    ratingCounts[value]++;
+                } else {
+                    ratingCounts[value] = 1;
+                }
+            });
 
+            // Hitung presentase masing-masing rating
+            const totalRatings = ratings.length;
+            const ratingLabels = Object.keys(ratingCounts);
+            const ratingData = ratingLabels.map(rating => (ratingCounts[rating] / totalRatings) * 100);
+
+            // Buat grafik Donut
+            const ctx = document.getElementById('ratingChart').getContext('2d');
+            const ratingChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ratingLabels,
+                    datasets: [{
+                        label: 'Presentase Rating',
+                        data: ratingData,
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                    }]
+                },
+                options: {
+                    cutout: '50%',
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

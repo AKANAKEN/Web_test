@@ -8,27 +8,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="Asset/Proses.js"></script>
 </head>
-<script>
-    // Function to load navbar content from an external file
-    function loadNavbar() {
-      fetch("navbar.html")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok.");
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => console.error("Failed to load navbar:", error));
-    }
-  </script>
+
 <body onload="loadNavbar()">
 
   <!-- Placeholder for Navbar -->
   <div id="navbar-placeholder"></div><br><br>
+
+ 
 
 
 <!-- Pricing Section -->

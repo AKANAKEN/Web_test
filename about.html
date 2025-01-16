@@ -8,55 +8,91 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
-</head>
-<script>
-    // Function to load navbar content from an external file
-    function loadNavbar() {
-      fetch("navbar.html")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok.");
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => console.error("Failed to load navbar:", error));
+  <style>
+    /* Responsiveness for iframe */
+    .responsive-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 16px;
     }
-  </script>
+
+    .responsive-iframe {
+  flex: 1 1 100%; /* Pastikan elemen mengambil lebar penuh */
+  max-width: 100%; /* Buat lebar maksimal 100% dari elemen induk */
+  height: auto; /* Pertahankan aspek rasio */
+  aspect-ratio: 16 / 9; /* Rasio aspek tetap */
+  border: none; /* Hilangkan border */
+  
+}
+
+
+    /* Adjust container padding for smaller screens */
+    @media (max-width: 600px) {
+      .w3-container {
+        padding: 16px;
+      }
+
+      .responsive-iframe {
+        height: 400px; /* Adjust height for smaller screens */
+
+      }
+    }
+  </style>
+
+  <script src="Asset/Proses.js"></script>
+</head>
+
 <body onload="loadNavbar()">
 
   <!-- Placeholder for Navbar -->
   <div id="navbar-placeholder"></div><br><br>
+
+ 
 </header>
 
 
-<!-- Form -->
-      <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
-        <h3 class="w3-center">FORM INTRODUCTION</h3>
 
-      <div class="w3-container w3-light-grey w3-bar">
-      <iframe width="520" height="520" class="" src="https://docs.google.com/forms/d/e/1FAIpQLSe84LXZkYXM3hPlL2xdFTK5iFRNpUCRaQd35o4BuocyB0H7gA/viewform?embedded=true" width="420" height="520" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-      <iframe width="520" height="520" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQuxoUT6Iu-8SaHbTZXIJV40bdHIEoVmpZrPeJ8sgzhlC7kUesw84fby5qmQJQ3HmdkWkbBYPba_Gya/pubhtml" width="420" height="520" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-      
+  <!-- Form Section -->
+  <div class="w3-container w3-light-grey" style="padding: 64px 16px;" id="forms">
+    <h3 class="w3-center">FORM INTRODUCTION</h3>
 
-      </div>
+    <div class="responsive-container">
+      <!-- Embed Google Form -->
+      <iframe 
+        class="responsive-iframe" 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSe84LXZkYXM3hPlL2xdFTK5iFRNpUCRaQd35o4BuocyB0H7gA/viewform?embedded=true">
+      </iframe>
 
-      <h3 class="w3-center">FORM RATING</h3>
-      <div class="w3-container w3-light-grey w3-bar">
-      <iframe width="520" height="520" class="w3-center" src="https://docs.google.com/forms/d/e/1FAIpQLSd5X75iOn9y3Xc19TD3Q5mtFjHy3XZGm0YTAjUvweWPsk3nXA/viewform?usp=sf_link" width="420" height="520" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-      <iframe width="520" height="520" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSNDGU3rWhw9Is_J8lSaI826RT_BTfB7DLfNNvfupyuAP5r9AdhH4PjRq-ZSq3jX5u_k2-eKCdQmsb3/pubhtml" width="420" height="520" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-      
+      <!-- Embed Google Sheet -->
+      <iframe 
+        class="responsive-iframe" 
+        src="Data/Member.html">
+      </iframe>
+    </div>
+  </div>
 
-      </div>
+  <!-- Rating Section -->
+  <div class="w3-container w3-light-grey" style="padding: 64px 16px;" id="rating">
+    <h3 class="w3-center">FORM RATING</h3>
 
-      </div>
+    <!-- <div class="responsive-container">
+      Embed Local Form -->
+      <!-- <iframe 
+        class="responsive-iframe" 
+        src="Data/Form_Rating.html">
+      </iframe> -->
 
+      <!-- Embed Local Chart -->
+      <iframe 
+  class="responsive-iframe" 
+  src="Data/Chart_Rating.html"
+  style="width: 100%;">
+</iframe>
 
-
-
-
+    </div>
+  </div>
 
 
 
