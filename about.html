@@ -21,7 +21,7 @@
     .responsive-iframe {
   flex: 1 1 100%; /* Pastikan elemen mengambil lebar penuh */
   max-width: 100%; /* Buat lebar maksimal 100% dari elemen induk */
-  height: auto; /* Pertahankan aspek rasio */
+  height: 1000px; /* Pertahankan aspek rasio */
   aspect-ratio: 16 / 9; /* Rasio aspek tetap */
   border: none; /* Hilangkan border */
   
@@ -35,7 +35,7 @@
       }
 
       .responsive-iframe {
-        height: 400px; /* Adjust height for smaller screens */
+        height: 1000px; /* Adjust height for smaller screens */
 
       }
     }
@@ -55,23 +55,23 @@
 
 
   <!-- Form Section -->
-  <div class="w3-container w3-light-grey" style="padding: 64px 16px;" id="forms">
+   <!-- <div class="w3-container w3-light-grey" style="padding: 64px 16px;" id="forms">
     <h3 class="w3-center">FORM INTRODUCTION</h3>
 
-    <div class="responsive-container">
-      <!-- Embed Google Form -->
-      <iframe 
+     <div class="responsive-container"> -->
+       <!-- Embed Google Form  -->
+      <!-- <iframe 
         class="responsive-iframe" 
         src="https://docs.google.com/forms/d/e/1FAIpQLSe84LXZkYXM3hPlL2xdFTK5iFRNpUCRaQd35o4BuocyB0H7gA/viewform?embedded=true">
-      </iframe>
+      </iframe> -->
 
       <!-- Embed Google Sheet -->
-      <iframe 
+      <!-- <iframe 
         class="responsive-iframe" 
         src="Data/Member.html">
       </iframe>
     </div>
-  </div>
+  </div>  -->
 
   <!-- Rating Section -->
   <div class="w3-container w3-light-grey" style="padding: 64px 16px;" id="rating">
@@ -87,8 +87,8 @@
       <!-- Embed Local Chart -->
       <iframe 
   class="responsive-iframe" 
-  src="Data/Chart_Rating.html"
-  style="width: 100%;">
+  src="API_data/Server_data/Chart_Rating.html"
+  style="width: 50%; height: 800px;" allowfullscreen frameborder="0">
 </iframe>
 
     </div>
