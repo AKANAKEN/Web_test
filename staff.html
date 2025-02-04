@@ -1,263 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Modular Navbar Example</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff List</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
-  <style>
-
-  .member-card {
-    text-align: center;
-    padding: 20px;
-    background: #222;
-    color: white;
-    border-radius: 10px;
-    margin: 20px;
-    width: 40%;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Adjust to create space between image, title, and button */
-    align-items: center;
-    box-sizing: border-box; /* Ensure padding doesn't affect total width */
-  }
   
-  .member-avatar {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px; /* Space between image and text */
-  }
-
-  .member-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .w3-card {
-    border-radius: 15px; /* Rounded corners for the cards */
-    overflow: hidden; /* Ensure content stays within rounded borders */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a floating effect */
-  }
-
-  /* Improve the button styling and positioning */
-  .details-container {
-    position: relative;
-    width: 100%;
-  }
-
-  .details-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #444;
-    color: white;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .details-container button:hover {
-    background-color: #555;
-  }
-
-  .details-panel {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    padding: 10px;
-    color: white;
-    border-radius: 5px;
-    margin-top: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: left;
-  }
-
-  /* Additional styling for larger screens */
-  @media (min-width: 768px) {
-    .w3-col.l3 {
-      /* width: 23%; Make card width smaller on larger screens to accommodate more cards */
+  <style>
+    /* CSS untuk dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      width: 100%;
     }
-  }
 
-  /* Ensuring the card itself doesn't overflow */
-  .w3-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the area while maintaining aspect ratio */
-  }
+    .dropdown-content {
+      position: absolute;
+      background-color: black;
+      color: white;
+      min-width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1;
+    }
 
-</style>
-
-
-
+    /* Efek hover untuk menampilkan detail */
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
 </head>
 
-<body onload="loadNavbar()">
+<body>
 
-  <!-- Placeholder for Navbar -->
-  <div id="navbar-placeholder"></div><br><br>
+  <!-- Judul -->
+  <div class="w3-container w3-grayscale-min" style="padding:50px 16px" id="staff">
+    <h3 class="w3-center">DAFTAR STAFF</h3>
+    <p class="w3-center w3-large">Data diambil secara otomatis dari API</p>
+    <div class="w3-row-padding w3-black" style="margin-top:64px" id="staff-container">
+      <!-- Card Staff akan dimasukkan di sini -->
+    </div>
+  </div>
 
   <script>
-      // Function to load navbar content from an external file
-      function loadNavbar() {
-          const timestamp = new Date().getTime(); // Get current timestamp
-          fetch(`navbar1.html?t=${timestamp}`)
-              .then(response => {
-                  if (!response.ok) {
-                      throw new Error("Network response was not ok.");
-                  }
-                  return response.text();
-              })
-              .then(data => {
-                  document.getElementById("navbar-placeholder").innerHTML = data;
-              })
-              .catch(error => console.error("Failed to load navbar:", error));
-      }
+    // URL JSON yang diberikan
+    const API_URL = "https://webdevcdb.github.io/API_SERVER_303076/010000110100010001000010/Staff_data.json";
 
-      // Define w3_open function
-      function w3_open() {
-          var sidebar = document.getElementById("mySidebar");
-          if (sidebar.style.display === "block") {
-              sidebar.style.display = "none";
-          } else {
-              sidebar.style.display = "block";
-          }
-      }
-  </script>
+    // Fungsi untuk mengambil data dari JSON dan menampilkannya
+    async function loadStaffData() {
+      try {
+        const response = await fetch(API_URL);
+        const staffData = await response.json();
+        const staffContainer = document.getElementById("staff-container");
 
-<!-- Team Section -->
-<div class="w3-container w3-grayscale" style="padding:128px 16px" id="team">
-  <div class="w3-container w3-black">
-  <h3 class="w3-center w3-black">STAFF </h3>
-  <p class="w3-center w3-large">Mereka adalah orang yang membuat & mengurus comunitas Pemberitau [Empire]</p>
-  <p class="w3-center w3-large">They are the people who make & take care of the community Pemberitau [Empire]</p></div>
-  <div class="w3-row-padding w3-grayscale-min" style="margin-top:64px">
-    
-    <div class="w3-row-padding" id="dataGrid"></div>
-
-    <script>
-        // Fungsi untuk memuat data JSON dari file eksternal
-        async function loadJSON() {
-            const response = await fetch('API_data/Staff_data.json'); // File JSON
-            return await response.json();
+        // Pastikan data yang diterima adalah array
+        if (!Array.isArray(staffData)) {
+          console.error("Data bukan dalam format array!");
+          return;
         }
 
-        // Fungsi untuk membuat elemen kartu
-        function createCard(user) {
-            return `
-        
-        <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card w3-black">
-            <img src="${user.img}" alt="${user.username}" style="width:100%">
-            <div class="w3-container">
-              <h3>${user.username}</h3>
-              <p class="w3-opacity">${user.position}</p>
-              <p>Status: ${user.status}</p>
+        // Hapus konten lama sebelum menambahkan yang baru
+        staffContainer.innerHTML = "";
 
-              <div class="details-container">
-                <button class="w3-button w3-light-grey w3-block" onclick="toggleDetails(event, this)">Detail</button>
-                <div class="details-panel" onmouseleave="hideDetails(this)">
-                  <p>Nickname: ${user.nickname}</p>
-                  <p>Skill: ${user.skill}</p>
-                  <p>Country: ${user.country}</p>
+        // Loop melalui data dan buat card untuk setiap staff
+        staffData.forEach(staff => {
+          const staffCard = document.createElement("div");
+          staffCard.classList.add("w3-col", "l3", "m6", "w3-margin-bottom");
+
+          staffCard.innerHTML = `
+            <div class="w3-card w3-black">
+              <div class="w3-center">
+                <img src="${staff.avatarUrl || 'https://webdevcdb.github.io/API_SERVER_303076/010000110100010001000010/Foto/CDB.gif'}" 
+                     alt="${staff.username}" 
+                     style="width: 265px; height: 265px; border-radius: 50%;">
+              </div>
+              <div class="w3-container">
+                <div class="w3-center">
+                  <h3>${staff.username || 'Unknown'}</h3>
+                  <p class="w3-opacity">Nickname: ${staff.nickame || 'N/A'}</p>
+                  <p class="w3-opacity">Position: ${staff.position || 'N/A'}</p>
+                </div>
+                <div class="dropdown">
+                  <button class="w3-button w3-block">Detail</button>
+                  <div class="dropdown-content">
+                    <p>Username: ${staff.username || 'N/A'}</p>
+                    <p>Nickname: ${staff.nickame || 'N/A'}</p>
+                    <p>Position: ${staff.position || 'N/A'}</p>
+                    <p>Skill: ${staff.skill || 'N/A'}</p>
+                    <p>Country: ${staff.country || 'N/A'}</p>
+                    <p>Status: ${staff.status || 'N/A'}</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      `;
-        }
+          `;
 
-        // Fungsi untuk menampilkan/menghilangkan panel detail
-        function toggleDetails(event, button) {
-            const panel = button.nextElementSibling;
+          staffContainer.appendChild(staffCard);
+        });
 
-            // Menutup panel jika sudah terbuka
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                // Menutup semua panel lain sebelum membuka panel ini
-                document.querySelectorAll('.details-panel').forEach(p => p.style.display = 'none');
-                panel.style.display = "block";
-            }
+      } catch (error) {
+        console.error("Gagal mengambil data staff:", error);
+      }
+    }
 
-            // Mencegah aksi default tombol atau link
-            event.preventDefault();
-        }
-
-        // Fungsi untuk menyembunyikan panel ketika kursor meninggalkan dropdown
-        function hideDetails(panel) {
-            panel.style.display = "none";
-        }
-
-        // Memuat data dan menampilkan kartu
-        loadJSON().then(users => {
-            const gridContainer = document.getElementById('dataGrid');
-            gridContainer.innerHTML = users.map(createCard).join('');
-        }).catch(error => console.error('Error loading JSON:', error));
-    </script>
-
-
-
-
-
-
-
-
-
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-
-
-    
-    <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
-<footer class="w3-center w3-black w3-padding-64">
-  <a href="#member1" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  
- <p class="w3-small">Website Ini bertujuan untuk Memperkenalkan Apa itu Comunitas <b><U> Pemberi Tau Empire</U></b></p>
-</footer>
- 
-<script>
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-
-
-// Toggle between showing and hiding the sidebar when clicking the menu icon
-var mySidebar = document.getElementById("mySidebar");
-
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-  } else {
-    mySidebar.style.display = 'block';
-  }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-    mySidebar.style.display = "none";
-}
-</script>
+    // Panggil fungsi saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", loadStaffData);
+  </script>
 
 </body>
 </html>

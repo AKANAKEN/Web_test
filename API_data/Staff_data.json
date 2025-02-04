@@ -1,8 +1,7 @@
-{
-  "staff": [
+[
     {
       "timestamp": "17/01/2025 20:46:03",
-      "avatarUrl": "https://drive.google.com/open?id=1YFaq6XC2H_HA2b5UXeV7DasJlWBSOWe8",
+      "img": "https://drive.google.com/open?id=1YFaq6XC2H_HA2b5UXeV7DasJlWBSOWe8",
       "username": "Akanaken",
       "nickame": "Kevin | Ken",
       "position": "Moderator",
@@ -13,7 +12,51 @@
     },
     {
       "timestamp": "17/01/2025 20:46:03",
-      "avatarUrl": "https://webdevcdb.github.io/API_SERVER_303076/010000110100010001000010/Foto/CDB.gif",
+      "img": "",
+      "username": "Zan Nendatta",
+      "nickame": "Zan | Kenkyu | Yuki",
+      "position": "Moderator",
+      "skill": "Comis & Carakter Modeling | Gamers | Riging live2d & 3d model",
+      "country": "Indonesia",
+      "status": "Midle",
+      "id": 2
+    },
+    {
+      "timestamp": "17/01/2025 20:46:03",
+      "img": "",
+      "username": "Futaki",
+      "nickame": "Futaki | Fut | Suon",
+      "position": "Owner",
+      "skill": "Ilustrator / Gambar | Nyanyi | Voice Acting | ASMR Eat/Drink | Turu pagi Bangun Siang",
+      "country": "Indonesia",
+      "status": "Midle",
+      "id": 2
+    },
+    {
+      "timestamp": "17/01/2025 20:46:03",
+      "img": "https://github.com/AKANAKEN/Web_test/blob/main/Data/Foto/CDB.gif",
+      "username": "Why D",
+      "nickame": "Why D | Widi",
+      "position": "Moderator",
+      "skill": "Nyanyi | Main Gitar | Meroasting | Caster",
+      "country": "Indonesia",
+      "status": "Midle",
+      "id": 2
+    },
+    {
+      "timestamp": "17/01/2025 20:46:03",
+      "img": "",
+      "username": "Mr. Azazel",
+      "nickame": "azel | azazel | zel",
+      "position": "Administrator",
+      "skill": "Meroasting | Caster | Voice Acting",
+      "country": "Indonesia",
+      "status": "Non Active",
+      "id": 2
+    },
+    {
+      "timestamp": "17/01/2025 20:46:03",
+      "img": "",
       "username": "Aozone",
       "nickame": "Faiz | Zon",
       "position": "Staff",
@@ -21,50 +64,5 @@
       "country": "Indonesia",
       "status": "Active",
       "id": 3
-    },
-    {
-      "timestamp": "17/01/2025 20:46:03",
-      "avatarUrl": "https://github.com/AKANAKEN/Web_test/blob/main/Data/Foto/CDB.gif",
-      "username": "Zan Nendatta",
-      "nickame": "Zan | Kenkyu | Yuki",
-      "position": "Moderator",
-      "skill": "Comis & Carakter Modeling | Gamers | Riging live2d & 3d model",
-      "country": "Indonesia",
-      "status": "Midle",
-      "id": 4
-    },
-    {
-      "timestamp": "18/01/2025 20:46:03",
-      "avatarUrl": "https://webdevcdb.github.io/API_SERVER_303076/010000110100010001000010/Foto/Futaki.png",
-      "username": "Futaki",
-      "nickame": "Futaki | Fut | Suon",
-      "position": "Owner",
-      "skill": "Ilustrator / Gambar | Nyanyi | Voice Acting | ASMR Eat/Drink | Turu pagi Bangun Siang",
-      "country": "Indonesia",
-      "status": "Midle",
-      "id": 5
-    },
-    {
-      "timestamp": "19/01/2025 20:46:03",
-      "avatarUrl": "https://webdevcdb.github.io/API_SERVER_303076/010000110100010001000010/Foto/CDB.gif",
-      "username": "Why D",
-      "nickame": "Why D | Widi",
-      "position": "Moderator",
-      "skill": "Nyanyi | Main Gitar | Meroasting | Caster",
-      "country": "Indonesia",
-      "status": "Midle",
-      "id": 6
-    },
-    {
-      "timestamp": "20/01/2025 20:46:03",
-      "avatarUrl": "https://webdevcdb.github.io/API_SERVER_303076/010000110100010001000010/Foto/CDB.gif",
-      "username": "Mr. Azazel",
-      "nickame": "azel | azazel | zel",
-      "position": "Moderator",
-      "skill": "Meroasting | Caster | Voice Acting",
-      "country": "Indonesia",
-      "status": "Non Active",
-      "id": 7
     }
   ]
-}
