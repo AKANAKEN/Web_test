@@ -1,76 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doughnut Chart Rating</title>
+    <title>Donut Chart - Rating</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .chart-container {
-            width: 50%;
-            margin: auto;
-        }
-    </style>
 </head>
 <body>
-    <h1>Doughnut Chart Rating</h1>
-    <div class="chart-container">
-        <canvas id="ratingChart"></canvas>
-    </div>
+
+    <h2>Diagram Donat - Rating Pengguna</h2>
+    <canvas id="myDonutChart" width="400" height="400"></canvas>
 
     <script>
-        async function fetchDataFromFile() {
+        // URL API
+        const apiUrl = "https://webdevcdb.github.io/API_SERVER_303076/010000110100010001000010/Server_data.json";
+
+        // Mengambil data dari API
+        async function fetchData() {
             try {
-                const response = await fetch('data.txt');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const text = await response.text();
-                const data = JSON.parse(text);
-
-                // Hitung jumlah masing-masing rating
-                const ratingCounts = {};
-                data.forEach(item => {
-                    const rating = item.rating;
-                    if (ratingCounts[rating]) {
-                        ratingCounts[rating]++;
-                    } else {
-                        ratingCounts[rating] = 1;
-                    }
-                });
-
-                // Siapkan data untuk chart
-                const ratingLabels = Object.keys(ratingCounts);
-                const ratingData = ratingLabels.map(rating => ratingCounts[rating]);
-
-                // Buat chart doughnut
-                const ctx = document.getElementById('ratingChart').getContext('2d');
-                const ratingChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ratingLabels,
-                        datasets: [{
-                            label: 'Jumlah Rating',
-                            data: ratingData,
-                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                return data;
             } catch (error) {
-                console.error('Error fetching or processing data:', error);
+                console.error("Gagal mengambil data:", error);
+                return [];
             }
         }
 
-        // Panggil fungsi untuk mengambil data dan membuat chart saat halaman dimuat
-        fetchDataFromFile();
+        // Mengelompokkan jumlah rating
+        function processData(data) {
+            const ratingCount = {};
+
+            data.forEach(item => {
+                if (ratingCount[item.rating]) {
+                    ratingCount[item.rating]++;
+                } else {
+                    ratingCount[item.rating] = 1;
+                }
+            });
+
+            return ratingCount;
+        }
+
+        // Membuat chart berdasarkan data API
+        async function createDonutChart() {
+            const apiData = await fetchData();
+            if (apiData.length === 0) {
+                alert("Data tidak tersedia atau gagal diambil.");
+                return;
+            }
+
+            const ratingData = processData(apiData);
+            const labels = Object.keys(ratingData);
+            const values = Object.values(ratingData);
+
+            // Warna acak untuk setiap rating
+            const backgroundColors = labels.map(() => '#' + Math.floor(Math.random() * 16777215).toString(16));
+
+            const ctx = document.getElementById('myDonutChart').getContext('2d');
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: backgroundColors,
+                        hoverBackgroundColor: backgroundColors
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    const total = tooltipItem.dataset.data.reduce((acc, val) => acc + val, 0);
+                                    const currentValue = tooltipItem.raw;
+                                    const percentage = ((currentValue / total) * 100).toFixed(2);
+                                    return `${tooltipItem.label}: ${percentage}% (${currentValue})`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Menjalankan fungsi untuk membuat chart
+        createDonutChart();
     </script>
+
 </body>
 </html>
