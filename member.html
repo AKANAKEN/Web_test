@@ -20,6 +20,10 @@
       padding: 0;
     }
     
+    .H-member {
+    color: white !important;
+  }
+
     .member-list {
       display: flex;
       flex-wrap: wrap;
@@ -62,6 +66,7 @@
       }
     }
 
+
     /* 2 card per baris di HP */
     @media (max-width: 600px) {
       .member-list {
@@ -77,14 +82,14 @@
   <div id="navbar-placeholder"></div><br><br>
 <script type="module" src="Asset/load_navbar.js"></script>
 
-  <div class="w3-container w3-center w3-padding-32">
-    <h2>Member List</h2>
-    <p id="online-count"></p>
-    <h3>Staff</h3>
-    <div id="staff-list" class="member-list"></div>
-    <h3>Member</h3>
-    <div id="member-list" class="member-list"></div>
-  </div>
+<div class="w3-container w3-center w3-padding-32 H-member">
+  <h2>Member List</h2>
+  <p id="online-count"></p>
+  <h3>Staff</h3>
+  <div id="staff-list" class="member-list H-member"></div>
+  <h3>Member</h3>
+  <div id="member-list" class="member-list"></div>
+</div>
 
   <script>
     async function fetchMembers() {
