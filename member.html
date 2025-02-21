@@ -1,74 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Member List</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Member</title>
+  <link rel="icon" type="image/png" href="Asset/Logo [Dasar].png">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
+
+
   <style>
-    .member-card {
-      text-align: center;
-      padding: 20px;
-      background: #222;
-      color: white;
-      border-radius: 10px;
-      margin: 20px;
-      width: calc(25% - 40px);
-      aspect-ratio: 1 / 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    body {
+      font-family: "Raleway", sans-serif;
+      background-color: #111;
+      color:black;
+      margin: 0;
+      padding: 0;
     }
-    .member-avatar {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-    }
+    
     .member-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .member-card {
+      text-align: center;
+      padding: 15px;
+      background: #222;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s;
+      width: 200px; /* Ukuran tetap */
+      height: 250px;
+    }
+
+    .member-card:hover {
+      transform: scale(1.05);
+    }
+
+    .member-avatar {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+
+    /* 4 card per baris di layar besar */
+    @media (min-width: 800px) {
+      .member-list {
+        justify-content: space-around;
+      }
+    }
+
+    /* 2 card per baris di HP */
+    @media (max-width: 600px) {
+      .member-list {
+        justify-content: center;
+      }
     }
   </style>
 </head>
+<script src="Asset/Proses.js"></script>
 <body onload="loadNavbar()">
 
   <!-- Placeholder for Navbar -->
   <div id="navbar-placeholder"></div><br><br>
+<script type="module" src="Asset/load_navbar.js"></script>
 
-  <script>
-      // Function to load navbar content from an external file
-      function loadNavbar() {
-          const timestamp = new Date().getTime(); // Get current timestamp
-          fetch(`navbar1.html?t=${timestamp}`)
-              .then(response => {
-                  if (!response.ok) {
-                      throw new Error("Network response was not ok.");
-                  }
-                  return response.text();
-              })
-              .then(data => {
-                  document.getElementById("navbar-placeholder").innerHTML = data;
-              })
-              .catch(error => console.error("Failed to load navbar:", error));
-      }
-
-      // Define w3_open function
-      function w3_open() {
-          var sidebar = document.getElementById("mySidebar");
-          if (sidebar.style.display === "block") {
-              sidebar.style.display = "none";
-          } else {
-              sidebar.style.display = "block";
-          }
-      }
-  </script>
-
-  
   <div class="w3-container w3-center w3-padding-32">
     <h2>Member List</h2>
     <p id="online-count"></p>
@@ -92,7 +100,7 @@
           memberCard.className = "member-card";
           memberCard.innerHTML = `
             <img class="member-avatar" src="${member.avatar_url}" alt="${member.username}" onerror="this.onerror=null;this.src='https://github.com/AKANAKEN/Web_test/blob/main/Asset/Logo%20CDB.gif';">
-            <h3>${member.username}#${member.discriminator}</h3>
+            <h3>${member.username}</h3>
             <p>Status: ${member.status}</p>
           `;
           
@@ -108,5 +116,6 @@
     }
     fetchMembers();
   </script>
+
 </body>
 </html>

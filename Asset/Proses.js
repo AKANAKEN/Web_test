@@ -1,5 +1,4 @@
-
-// untuk Navbar
+// Untuk Navbar
 function loadNavbar() {
     const timestamp = new Date().getTime(); // Get current timestamp
     fetch(`navbar1.html?t=${timestamp}`)
@@ -25,8 +24,12 @@ function w3_open() {
     }
 }
 
-
-// untuk Alert
+// Untuk menampilkan alert menggunakan modal W3.CSS
 function myFunction1() {
-    alert("AkanaKen : Repair Web [coming soon]");
-  }
+    document.getElementById("myModal").style.display = "block";
+}
+
+// Untuk menutup modal
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
