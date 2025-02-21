@@ -177,6 +177,20 @@ function submitReview() {
       <canvas id="ratingChart"></canvas>
     </div>
   </div>
+
+  <!-- Tombol untuk Membuka Modal -->
+  <div class="w3-center w3-margin">
+    <button onclick="document.getElementById('reviewModal').style.display='block'" class="w3-button w3-blue w3-round">Tampilkan Review</button>
+  </div>
+</div>
+
+<!-- Modal (Popup) -->
+<div id="reviewModal" class="w3-modal">
+  <div class="w3-modal-content modal-content">
+    <span onclick="document.getElementById('reviewModal').style.display='none'" class="w3-button w3-display-topright close-btn">&times;</span>
+    <h2 class="w3-center">⭐ Review Pengguna ⭐</h2>
+    <div id="reviewContainer" class="w3-row-padding"></div>
+  </div>
 </div>
 
 <script>
@@ -187,8 +201,9 @@ function submitReview() {
       const response = await fetch(sheetURL);
       const data = await response.text();
       const rows = data.split("\n").map(row => row.split(","));
-
+      
       generateChart(rows);
+      displayData(rows);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -230,6 +245,30 @@ function submitReview() {
         }
       }
     });
+  }
+
+  function displayData(rows) {
+    let container = document.getElementById("reviewContainer");
+    container.innerHTML = "";
+
+    for (let i = 1; i < rows.length; i++) {
+      let [timestamp, username, rating, review] = rows[i];
+
+      // Jika data tidak valid, skip
+      if (!username || !rating || !review) continue;
+
+      let stars = "⭐".repeat(parseInt(rating.replace("Star ", "")));
+
+      let cardHTML = `
+        <div class="w3-padding w3-margin-bottom w3-card w3-round">
+          <h4>${username}</h4>
+          <p class="rating">${stars}</p>
+          <p>"${review}"</p>
+        </div>
+      `;
+
+      container.innerHTML += cardHTML;
+    }
   }
 
   fetchData();
