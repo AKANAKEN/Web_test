@@ -65,7 +65,113 @@
         height: 1000px; /* Adjust height for smaller screens */
 
       }
-    }
+
+      * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+        .form-container, .chart-container {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+            width: 100%;
+            max-width: 600px;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-container input, 
+        .form-container textarea, 
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-container textarea {
+            height: 120px;
+            resize: none;
+        }
+        .rating-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+        .rating-container input[type="radio"] {
+            display: none;
+        }
+        .rating-container label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+        .rating-container input[type="radio"]:checked + label {
+            background: #33cc33;
+            color: white;
+        }
+        .submit-btn {
+            background: #33cc33;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #2a992a;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .form-container, .chart-container {
+                max-width: 100%;
+            }
+        }}
   </style>
 
   <script src="Asset/Proses.js"></script>
@@ -107,32 +213,23 @@
   <!-- ======================================================================================= -->
   <!-- Rating Section -->
 <br><br  id="review">
-<div class="w3-container w3-margin-top" rel="stylesheet" href="Asset/Style2.css">
-  <div class="w3-row-padding">
-    
-    <!-- Form Review (5 bagian) -->
-    
-    <div class="w3-col l5 m12 w3-padding">
-      <div class="w3-card w3-dark-grey w3-round w3-padding w3-center">
-        <h2 class="w3-text-white">Form Review</h2>
+<div class="container">
+    <!-- Form Review -->
+    <div class="form-container">
         <form id="reviewForm">
-          <input type="text" class="w3-input w3-round w3-margin-bottom" id="username" name="username" placeholder="Username" required>
-          <textarea class="w3-input w3-round w3-margin-bottom" id="review" name="review" rows="4" placeholder="Tulis review Anda..." required></textarea>
-          <input type="email" class="w3-input w3-round w3-margin-bottom" id="email" name="email" placeholder="Email Address" required>
-          
-          <div class="w3-margin-bottom">
-            <label class="w3-text-white">Rating:</label>
-            <div class="rating">
-              <input type="radio" id="star5" name="rating" value="Star 5" required><label for="star5">5</label>
-              <input type="radio" id="star4" name="rating" value="Star 4"><label for="star4">4</label>
-              <input type="radio" id="star3" name="rating" value="Star 3"><label for="star3">3</label>
-              <input type="radio" id="star2" name="rating" value="Star 2"><label for="star2">2</label>
-              <input type="radio" id="star1" name="rating" value="Star 1"><label for="star1">1</label>
+            <input type="text" id="username" placeholder="Your Name *">
+            <input type="email" id="email" placeholder="Your Email *">
+            <textarea id="review" placeholder="Your Message *"></textarea>
+            <div class="rating-container">
+                <span>Rating:</span>
+                <input type="radio" id="star5" name="rating" value="Star 5"><label for="star5">5</label>
+                <input type="radio" id="star4" name="rating" value="Star 4"><label for="star4">4</label>
+                <input type="radio" id="star3" name="rating" value="Star 3"><label for="star3">3</label>
+                <input type="radio" id="star2" name="rating" value="Star 2"><label for="star2">2</label>
+                <input type="radio" id="star1" name="rating" value="Star 1"><label for="star1">1</label>
             </div>
-          </div>
-          <button type="button" class="w3-button w3-round w3-block w3-padding" onclick="submitReview()">Submit</button>
+            <button type="button" class="submit-btn" onclick="submitReview()">Submit</button>
         </form>
-      </div>
     </div>
       
 

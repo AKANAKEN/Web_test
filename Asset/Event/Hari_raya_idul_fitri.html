@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Lebaran</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap">
+    <style>
+        body {
+            background: radial-gradient(circle, #001f3f, #000a1f);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: white;
+            position: relative;
+        }
+        .countdown {
+            font-size: 3em;
+            margin-top: 20vh;
+            text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5);
+        }
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: explode 1.5s ease-out;
+        }
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(4); opacity: 0.7; }
+            100% { transform: scale(8); opacity: 0; }
+        }
+        .lebaran-text {
+            font-size: 4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ffcc00, #ff0066, #00ff99, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Countdown Menuju Lebaran!</h1> -->
+    <div class="countdown" id="countdown"></div>
+    <div id="lebaranText" class="lebaran-text" style="display: none;"><h3>Selamat Hari Raya Idul Fitri!</h3>
+       <p> Mohon Maaf Lahir & Batin</p>
+    </div>
+    
+    <audio id="fireworkSound" src="fireworks-107116.mp3" preload="auto"></audio>
+    
+    <script>
+        let hasPlayedSound = false;
+        
+        function updateCountdown() {
+            const targetDate = new Date('Maret 31, 2025 13:39:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+            
+            if (difference < 0) {
+                document.getElementById("countdown").style.display = "none";
+                document.getElementById("lebaranText").style.display = "block";
+                if (!hasPlayedSound) {
+                    playFireworkSound();
+                    hasPlayedSound = true;
+                }
+                setInterval(createIntenseFirework, 1000);
+                return;
+            }
+            
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = `${days} : ${hours} : ${minutes} : ${seconds}  
+            <br> Menuju Hari Raya Idul Fitri`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        function playFireworkSound() {
+            const sound = document.getElementById("fireworkSound");
+            sound.play();
+        }
+        
+        function createFirework() {
+            for (let i = 0; i < 2; i++) {
+                const firework = document.createElement("div");
+                firework.classList.add("firework");
+                document.body.appendChild(firework);
+                
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                const color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                
+                firework.style.left = `${x}px`;
+                firework.style.top = `${y}px`;
+                firework.style.backgroundColor = color;
+                
+                setTimeout(() => { firework.remove(); }, 1500);
+            }
+        }
+        setInterval(createFirework, 2000);
+        
+        function createIntenseFirework() {
+            for (let i = 0; i < 5; i++) {
+                const firework = document.createElement("div");
+                firework.classList.add("firework");
+                document.body.appendChild(firework);
+                
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                const color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                
+                firework.style.left = `${x}px`;
+                firework.style.top = `${y}px`;
+                firework.style.backgroundColor = color;
+                
+                setTimeout(() => { firework.remove(); }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
