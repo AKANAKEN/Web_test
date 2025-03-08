@@ -246,3 +246,10 @@ canvas {
 }
 
 
+
+#qrcode {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: white;
+  display: inline-block;
+}

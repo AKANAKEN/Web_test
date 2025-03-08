@@ -39,15 +39,47 @@
       <div class="w3-third w3-section">
     
         <ul class="w3-ul w3-white w3-hover-shadow">
-          <li class="w3-black w3-xlarge w3-padding-32">-</li>
-          <li class="w3-padding-16"><b>Deskripsi</b><br>-</li>
-          <li class="w3-padding-16"><b>Dibuat Oleh </b><br> -</li>
+          <li class="w3-black w3-xlarge w3-padding-32">IP Calculate Subnet</li>
+          <li class="w3-padding-16"><b>Deskripsi</b><br> Kalkulator untuk menghitung IP</li>
+          <li class="w3-padding-16"><b>Dibuat Oleh </b><br> Akanaken</li>
           <li class="w3-light-grey w3-padding-24">
             <!-- <button class="w3-button w3-black w3-padding-large" data-bs-toggle="modal" data-bs-target="#panduanModal1">Panduan</button> -->
-            <a href="#"><button class="w3-button w3-black w3-padding-large">  Play </button></a>
+            <!-- <a href="#"><button class="w3-button w3-black w3-padding-large">  Play </button></a> -->
+            <button class="w3-button w3-black w3-margin-top" onclick="document.getElementById('subnetModal').style.display='block'">Play</button>
+    
+            <div id="subnetModal" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4" style="max-width: 600px;">
+                    <header class="w3-container w3-black">
+                        <span onclick="document.getElementById('subnetModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <h2>Subnet Calculator</h2>
+                    </header>
+                    <div class="w3-container w3-padding">
+                        <label>IP Address: <input type="text" id="ip" class="w3-input w3-border" value="192.168.1.10"></label>
+                        <label>Subnet Mask: <input type="number" id="mask" class="w3-input w3-border" value="24" min="1" max="30"></label>
+                        <button class="w3-button w3-black w3-border" onclick="calculateSubnet()">Hitung</button>
+                        <table class="w3-table w3-bordered w3-white w3-margin-top">
+                            <tr><th>Parameter</th><th>Nilai</th></tr>
+                            <tr><td>Network</td><td id="network"></td></tr>
+                            <tr><td>Netmask</td><td id="netmask"></td></tr>
+                            <tr><td>Wildcard Mask</td><td id="wildcard"></td></tr>
+                            <tr><td>Broadcast</td><td id="broadcast"></td></tr>
+                            <tr><td>HostMin</td><td id="hostmin"></td></tr>
+                            <tr><td>HostMax</td><td id="hostmax"></td></tr>
+                            <tr><td>Hosts/Net</td><td id="hosts"></td></tr>
+                            <tr><td>Class</td><td id="class"></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <script src="Fitur/ip_cal.js"></script>
+
           </li>
         </ul>
       </div>
+    
+    
+      
   
       <div class="w3-third">
         <ul class="w3-ul w3-white w3-hover-shadow">
@@ -59,22 +91,55 @@
           </li>
           <li class="w3-light-grey w3-padding-24">
             <button class="w3-button w3-black w3-padding-large" data-bs-toggle="modal" data-bs-target="#panduanModal1">Panduan</button>
-            <a href="Fitur/Livechat_generator.html"><button class="w3-button w3-black w3-padding-large">  Play </button></a>
+            <!-- <a href="Fitur/Livechat_generator.html"><button class="w3-button w3-black w3-padding-large">  Play </button></a> -->
+            <button class="w3-button w3-black w3-padding-large" onclick="LVC_pop()" >PLay</button>
+    
+              <script>
+                  function LVC_pop() {
+                      window.open('Fitur/Livechat_generator.html', 'PopupWindow', 'width=800,height=600,resizable=yes,scrollbars=yes');
+                  }
+              </script>
           </li>
         </ul>
       </div>
   
       
-      <div class="w3-third w3-section">
+      <!-- <div class="w3-third w3-section">
         <ul class="w3-ul w3-white w3-hover-shadow">
           <li class="w3-black w3-xlarge w3-padding-32">-</li>
           <li class="w3-padding-16"><b>Deskripsi</b><br> -</li>
           <li class="w3-padding-16"><b>Dibuat Oleh</b><br> -</li>
           <li class="w3-light-grey w3-padding-24">
-            <a href="#"><button class="w3-button w3-black w3-padding-large"> Donate</button></a>
+            <a href="#"><button class="w3-button w3-black w3-padding-large"> Play</button></a>
           </li>
         </ul>
-      </div>
+      </div> -->
+      
+
+        <div class="w3-third w3-section">
+      
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-black w3-xlarge w3-padding-32">QR Code</li>
+            <li class="w3-padding-16"><b>Deskripsi</b><br> Web QR Generator</li>
+            <li class="w3-padding-16"><b>Dibuat Oleh </b><br> Akanaken</li>
+            <li class="w3-light-grey w3-padding-24">
+              <!-- <button class="w3-button w3-black w3-padding-large" data-bs-toggle="modal" data-bs-target="#panduanModal1">Panduan</button> -->
+              <!-- <a href="#"><button class="w3-button w3-black w3-padding-large">  Play </button></a> -->
+              <!-- <button class="w3-button w3-black w3-margin-top" onclick="document.getElementById('subnetModal').style.display='block'">Play</button> -->
+      
+              <button class="w3-button w3-black w3-margin-top" onclick="QR_pop()" >PLay</button>
+    
+              <script>
+                  function QR_pop() {
+                      window.open('Fitur/QR-Code_Generator.html', 'PopupWindow', 'width=800,height=600,resizable=yes,scrollbars=yes');
+                  }
+              </script>
+              
+              <!-- <script src="Fitur/ip_cal.js"></script> -->
+  
+            </li>
+          </ul>
+        </div>
   
     </div>
   </div>
@@ -229,7 +294,7 @@
 </div>
 
 
-<iframe src="Fitur/QR-Code_Generator.html" width="100%" height="60%"></iframe>
+<!-- <iframe src="Fitur/QR-Code_Generator.html" width="100%" height="60%"></iframe> -->
 
 <footer class="w3-center w3-black w3-padding-64">
     <a href="#pricing" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
