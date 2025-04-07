@@ -11,7 +11,8 @@
   <style>
     body {
       font-family: "Raleway", sans-serif;
-      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      /* background: linear-gradient(135deg, #6e8efb, #a777e3); */
+      background:  black;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -20,7 +21,8 @@
     }
 
     .w3-card {
-      max-width: 400px;
+      width: 500px;
+      /* max-width: 400px; */
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
       padding: 20px;
@@ -61,7 +63,7 @@
     }
 
     .w3-button {
-      background-color: #4a69bd;
+      background-color: grey;
       transition: all 0.3s ease;
     }
 
@@ -74,13 +76,13 @@
 
   <div class="w3-container">
     <div class="w3-card w3-round w3-padding w3-center">
-      <h2 class="w3-text-white">⭐ Form Review ⭐</h2>
+      <h2 class="w3-text-white">Form Review</h2>
       <form id="reviewForm">
-        <input type="text" class="w3-input w3-round w3-margin-bottom" id="username" name="username" placeholder="Username" required>
+        <input type="text" class="w3-input w3-round w3-margin-bottom" id="username" name="username" placeholder="Masukan Username Anda..." required>
 
-        <textarea class="w3-input w3-round w3-margin-bottom" id="review" name="review" rows="4" placeholder="Tulis review Anda..." required></textarea>
+        <textarea class="w3-input w3-round w3-margin-bottom" id="review" name="review" rows="4" placeholder="Masukan Review Anda..." required></textarea>
 
-        <input type="email" class="w3-input w3-round w3-margin-bottom" id="email" name="email" placeholder="Email Address" required>
+        <input type="email" class="w3-input w3-round w3-margin-bottom" id="email" name="email" placeholder="Masukan Email Anda..." required>
 
         <div class="w3-margin-bottom">
           <label class="w3-text-white">Rating:</label>
